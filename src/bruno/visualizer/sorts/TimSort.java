@@ -99,6 +99,7 @@ public class TimSort extends UpdateGraphThread {
 	 * @param n     array length
 	 */
 	public static void timSort(int[] arr, int n, BarChart<String, Number> chart) {
+		startThread(chart);
 		for (int i = 0; i < n; i += RUN) {
 			insertionSort(arr, i, Math.min((i + 31), (n - 1)), chart);
 		}

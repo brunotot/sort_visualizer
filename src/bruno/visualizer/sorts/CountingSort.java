@@ -34,14 +34,12 @@ public class CountingSort extends UpdateGraphThread {
 		}
 
 		for (int i = arr.length - 1; i >= 0; i--) {
-
 			output[count[arr[i] - min] - 1] = arr[i];
 			list.add(new XYValue(count[arr[i] - min] - 1, output[count[arr[i] - min] - 1]));
 			count[arr[i] - min]--;
 		}
 
 		for (int i = 0; i < arr.length; i++) {
-
 			arr[i] = output[i];
 			list.add(new XYValue(i, arr[i]));
 		}

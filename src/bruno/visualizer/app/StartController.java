@@ -260,6 +260,7 @@ public class StartController extends UpdateGraphThread {
 		sortButton.setTooltip(new Tooltip("Start sort"));
 		transitionSpeed.addEventFilter(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent e) {
+				System.out.println(true);
 				updateThreadDelay((int)transitionSpeed.getValue(), chart);
 			}
 		});

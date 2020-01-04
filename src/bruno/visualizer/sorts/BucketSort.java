@@ -23,7 +23,6 @@ public class BucketSort extends UpdateGraphThread {
 	 * @return arrays a and b combined
 	 */
 	public static int[] combine(int[] a, int[] b, BarChart<String, Number> chart) {
-
 		int length = a.length + b.length;
 		int[] result = new int[length];
 
@@ -47,6 +46,7 @@ public class BucketSort extends UpdateGraphThread {
 	 * @param n     array size
 	 */
 	public static void bucketSort(int arr[], BarChart<String, Number> chart, int n) {
+		startThread(chart);
 		List<List<Integer>> buckets = new ArrayList<>();
 		for (int i = 0; i < n; i++) {
 			buckets.add(new ArrayList<>());
@@ -73,14 +73,12 @@ public class BucketSort extends UpdateGraphThread {
 	}
 
 	public static void insertionSort(int arr[], BarChart<String, Number> chart) {
-		startThread(chart);
 		int n = arr.length;
 		for (int i = 1; i < n; ++i) {
 			int key = arr[i];
 			int j = i - 1;
 
 			while (j >= 0 && arr[j] > key) {
-
 				arr[j + 1] = arr[j];
 				list.add(new XYValue(j + 1, arr[j + 1]));
 				j = j - 1;

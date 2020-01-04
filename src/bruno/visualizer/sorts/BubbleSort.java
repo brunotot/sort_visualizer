@@ -53,9 +53,7 @@ public class BubbleSort extends UpdateGraphThread {
 				int temp = arr[i];
 				arr[i] = arr[i + 1];
 				list.add(new XYValue(i, arr[i]));
-				if (list.size() == 3)
-
-					arr[i + 1] = temp;
+				arr[i + 1] = temp;
 				list.add(new XYValue(i + 1, arr[i + 1]));
 			}
 		}

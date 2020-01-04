@@ -46,7 +46,7 @@ public class UpdateGraphThread {
 	 * A static ScheduledExecutorService object used to start and stop the update of
 	 * the chart.
 	 */
-	private static ScheduledExecutorService scheduledExecutorService;
+	private static ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 
 	/**
 	 * A basic stop-thread method (stops scheduled executor service if in running
@@ -69,6 +69,8 @@ public class UpdateGraphThread {
 	 * @param chart the chart that needs to be updated
 	 */
 	protected static void startThread(BarChart<String, Number> chart) {
+		if(!scheduledExecutorService.isTerminated())
+			return;
 		if (chart == null)
 			return;
 		Slider transitionSpeed = (Slider) Main.getRoot().lookup("#transitionSpeed");
@@ -110,8 +112,11 @@ public class UpdateGraphThread {
 	 * @param chart chart that holds an array of integer values
 	 */
 	protected static void updateThreadDelay(int milliseconds, BarChart<String, Number> chart) {
+		if(milliseconds * -1 == WAITMILLISECONDS) {
+			return;
+		}
 		stopThread();
-		WAITMILLISECONDS = milliseconds;
+		WAITMILLISECONDS = milliseconds * -1;
 		startThread(chart);
 	}
 }

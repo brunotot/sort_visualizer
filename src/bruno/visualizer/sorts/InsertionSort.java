@@ -43,10 +43,10 @@ public class InsertionSort extends UpdateGraphThread {
 	 * @param n     size of the array
 	 */
 	public static void insertionSortRecursively(int arr[], BarChart<String, Number> chart, int n) {
-		startThread(chart);
 		if (n <= 1) {
 			return;
 		}
+		startThread(chart);
 
 		insertionSortRecursively(arr, chart, n - 1);
 
