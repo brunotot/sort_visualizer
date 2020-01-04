@@ -18,12 +18,13 @@ public class TimSort extends UpdateGraphThread {
 	private static int RUN = 32;
 
 	/**
-	 * Starts the insertion sort that is used by Tim sort's diving of array by blocks.
-	 * 
+	 * Starts the insertion sort that is used by Tim sort's diving of array by
+	 * blocks.
+	 *
 	 * @param arr   array of integer values of the chart
-	 * @param chart chart that holds an array of integer values
 	 * @param left  left integer parameter
 	 * @param right right integer parameter
+	 * @param chart chart that holds an array of integer values
 	 */
 	public static void insertionSort(int[] arr, int left, int right, BarChart<String, Number> chart) {
 		for (int i = left + 1; i <= right; i++) {
@@ -40,13 +41,13 @@ public class TimSort extends UpdateGraphThread {
 	}
 
 	/**
-	 * Method used for merging left and right array
-	 * 
+	 * Method used for merging left and right array.
+	 *
 	 * @param arr   array of integer values of the chart
-	 * @param chart chart that holds an array of integer values
 	 * @param l     left integer parameter
-	 * @param r     right integer parameter
 	 * @param m     middle integer parameter
+	 * @param r     right integer parameter
+	 * @param chart chart that holds an array of integer values
 	 */
 	public static void merge(int[] arr, int l, int m, int r, BarChart<String, Number> chart) {
 		int len1 = m - l + 1, len2 = r - m;
@@ -93,12 +94,12 @@ public class TimSort extends UpdateGraphThread {
 
 	/**
 	 * Starts the tim sort sequence.
-	 * 
+	 *
 	 * @param arr   array of integer values of the chart
 	 * @param chart chart that holds an array of integer values
 	 * @param n     array length
 	 */
-	public static void timSort(int[] arr, int n, BarChart<String, Number> chart) {
+	public static void timSort(int[] arr, BarChart<String, Number> chart, int n) {
 		startThread(chart);
 		for (int i = 0; i < n; i += RUN) {
 			insertionSort(arr, i, Math.min((i + 31), (n - 1)), chart);

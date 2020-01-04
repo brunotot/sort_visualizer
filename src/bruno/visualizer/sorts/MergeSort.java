@@ -11,14 +11,15 @@ import javafx.scene.chart.BarChart;
  *
  */
 public class MergeSort extends UpdateGraphThread {
+
 	/**
-	 * Method used for merging left and right array
-	 * 
+	 * Method used for merging left and right array.
+	 *
 	 * @param arr   array of integer values of the chart
-	 * @param chart chart that holds an array of integer values
 	 * @param l     left integer parameter
-	 * @param r     right integer parameter
 	 * @param m     middle integer parameter
+	 * @param r     right integer parameter
+	 * @param chart chart that holds an array of integer values
 	 */
 	private static void merge(int arr[], int l, int m, int r, BarChart<String, Number> chart) {
 		int n1 = m - l + 1;

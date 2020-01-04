@@ -38,11 +38,11 @@ public class HeapSort extends UpdateGraphThread {
 
 	/**
 	 * Heapify operation of the given array.
-	 * 
+	 *
 	 * @param arr   array of integer values of the chart
-	 * @param chart chart that holds an array of integer values
 	 * @param n     size of the array
 	 * @param i     index of an array element
+	 * @param chart chart that holds an array of integer values
 	 */
 	private static void heapify(int arr[], int n, int i, BarChart<String, Number> chart) {
 		int largest = i;

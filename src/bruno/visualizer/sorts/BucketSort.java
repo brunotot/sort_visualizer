@@ -14,9 +14,10 @@ import javafx.scene.chart.BarChart;
  *
  */
 public class BucketSort extends UpdateGraphThread {
+
 	/**
-	 * Method for combining two integer arrays
-	 * 
+	 * Method for combining two integer arrays.
+	 *
 	 * @param a     integer array
 	 * @param b     integer array
 	 * @param chart chart that holds an array of integer values
@@ -72,6 +73,12 @@ public class BucketSort extends UpdateGraphThread {
 		}
 	}
 
+	/**
+	 * Insertion sort.
+	 *
+	 * @param arr   the arr
+	 * @param chart the chart
+	 */
 	public static void insertionSort(int arr[], BarChart<String, Number> chart) {
 		int n = arr.length;
 		for (int i = 1; i < n; ++i) {

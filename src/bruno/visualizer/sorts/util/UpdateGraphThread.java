@@ -7,7 +7,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import bruno.visualizer.app.Main;
-import bruno.visualizer.util.Colors;
+import bruno.visualizer.util.Constraints;
 import javafx.application.Platform;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.Slider;
@@ -19,12 +19,6 @@ import javafx.scene.control.Slider;
  *
  */
 public class UpdateGraphThread {
-	/**
-	 * Holds integer information of how many milliseconds does it take to actually
-	 * start the sorting sequence.
-	 */
-	private static final Integer INITIALDELAYMILLISECONDS = 10;
-
 	/**
 	 * A static final Integer that holds the value of time to wait after each array
 	 * element change.
@@ -51,9 +45,11 @@ public class UpdateGraphThread {
 	/**
 	 * A basic stop-thread method (stops scheduled executor service if in running
 	 * state).
+	 *
+	 * @return true, if successful
 	 */
 	protected static boolean stopThread() {
-		
+
 		if (scheduledExecutorService != null && !scheduledExecutorService.isShutdown()) {
 			scheduledExecutorService.shutdown();
 			return true;
@@ -78,39 +74,39 @@ public class UpdateGraphThread {
 			Platform.runLater(() -> {
 				if (indexCounter == list.size()) {
 					chart.getData().get(0).getData().forEach(elem -> {
-						elem.getNode().setStyle("-fx-background-color: " + Colors.DEFAULT + ";");
+						elem.getNode().setStyle("-fx-background-color: " + Constraints.DEFAULT + ";");
 					});
 					indexCounter = 0;
 					list = new ArrayList<>();
 					stopThread();
-					
+
 					return;
 				}
 
 				if (indexCounter == 0)
 					chart.getData().get(0).getData().get(list.get(indexCounter).getIndex()).getNode()
-							.setStyle("-fx-background-color: " + Colors.DEFAULT + ";");
+							.setStyle("-fx-background-color: " + Constraints.DEFAULT + ";");
 
 				else
 					chart.getData().get(0).getData().get(list.get(indexCounter - 1).getIndex()).getNode()
-							.setStyle("-fx-background-color: " + Colors.DEFAULT + ";");
+							.setStyle("-fx-background-color: " + Constraints.DEFAULT + ";");
 				chart.getData().get(0).getData().get(list.get(indexCounter).getIndex()).getNode()
-						.setStyle("-fx-background-color: " + Colors.CHANGINGELEMENT + ";");
+						.setStyle("-fx-background-color: " + Constraints.CHANGINGELEMENT + ";");
 				chart.getData().get(0).getData().get(list.get(indexCounter).getIndex())
 						.setYValue(list.get(indexCounter).getValue());
 				indexCounter++;
 			});
-		}, INITIALDELAYMILLISECONDS, WAITMILLISECONDS, TimeUnit.MILLISECONDS);
+		}, Constraints.INITIALDELAYMILLISECONDS, WAITMILLISECONDS, TimeUnit.MILLISECONDS);
 	}
-	
+
 	/**
 	 * Modifies the delay speed.
 	 * 
 	 * @param milliseconds delay milliseconds
-	 * @param chart chart that holds an array of integer values
+	 * @param chart        chart that holds an array of integer values
 	 */
 	protected static void updateThreadDelay(int milliseconds, BarChart<String, Number> chart) {
-		if(milliseconds * -1 == WAITMILLISECONDS) {
+		if (milliseconds * -1 == WAITMILLISECONDS) {
 			return;
 		}
 		stopThread();

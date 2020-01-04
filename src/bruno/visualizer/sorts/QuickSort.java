@@ -10,13 +10,14 @@ import javafx.scene.chart.BarChart;
  * @author TotB
  */
 public class QuickSort extends UpdateGraphThread {
+
 	/**
 	 * Method for obtaining the pi integer used in quick sort method.
-	 * 
+	 *
 	 * @param arr             array of integer values of the chart
-	 * @param chart           chart that holds an array of integer values
 	 * @param low             low integer parameter
 	 * @param high            high integer parameter
+	 * @param chart           chart that holds an array of integer values
 	 * @param normalQuickSort can be normal quick sort or iterative quick sort
 	 * @return pi partition integer
 	 */

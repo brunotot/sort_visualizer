@@ -8,17 +8,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- * Main class that starts the primary window of SortVisualizer JavaFX project
- * 
- * @author TotB
+ * Main class that starts the primary window of SortVisualizer JavaFX project.
  *
+ * @author TotB
  */
 public class Main extends Application {
 	/**
 	 * Static main BorderPane window object.
 	 */
 	public static BorderPane root;
-	
+
 	/**
 	 * Getter method for main BorderPane object.
 	 * 
@@ -27,18 +26,11 @@ public class Main extends Application {
 	public static BorderPane getRoot() {
 		return root;
 	}
-
+	
 	/**
-	 * Setter method for main BorderPane object.
-	 * 
-	 * @param root main BorderPane object
-	 */
-	public static void setRoot(BorderPane root) {
-		Main.root = root;
-	}
-
-	/**
-	 * Method gets called upon launch() to start the primary stage
+	 * Method gets called upon launch() to start the primary stage.
+	 *
+	 * @param primaryStage the primary stage
 	 */
 	@Override
 	public void start(Stage primaryStage) {
@@ -55,8 +47,8 @@ public class Main extends Application {
 	}
 
 	/**
-	 * Starting method for SortVisualizer JavaFX project
-	 * 
+	 * Starting method for SortVisualizer JavaFX project.
+	 *
 	 * @param args input string (usually null)
 	 */
 	public static void main(String[] args) {

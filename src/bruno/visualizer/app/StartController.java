@@ -20,13 +20,14 @@ import bruno.visualizer.sorts.SelectionSort;
 import bruno.visualizer.sorts.ShellSort;
 import bruno.visualizer.sorts.TimSort;
 import bruno.visualizer.sorts.util.UpdateGraphThread;
-import bruno.visualizer.util.Colors;
+import bruno.visualizer.util.Constraints;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -38,21 +39,11 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * A controller class that controls Start.fxml.
- * 
+ *
  * @author TotB
  *
  */
 public class StartController extends UpdateGraphThread {
-	/**
-	 * Maximum transition speed for transition speed Slider object.
-	 */
-	private static final double MAXTRANSITIONSPEED = -2;
-
-	/**
-	 * Minimum transition speed for transition speed Slider object.
-	 */
-	private static final double MINTRANSITIONSPEED = -800;
-
 	/**
 	 * Image to be displayed on button.
 	 */
@@ -64,7 +55,7 @@ public class StartController extends UpdateGraphThread {
 	 * sequence for user to see.
 	 */
 	@FXML
-	private CheckBox realTime;
+	private CheckBox noDelay;
 
 	/**
 	 * Slider object for transition speed.
@@ -91,7 +82,7 @@ public class StartController extends UpdateGraphThread {
 	private Button stopSortButton;
 
 	/**
-	 * NumberAxis variable from the BarChart (Y-axis)
+	 * NumberAxis variable from the BarChart (Y-axis).
 	 */
 	@FXML
 	private NumberAxis yAxis;
@@ -124,23 +115,17 @@ public class StartController extends UpdateGraphThread {
 			indexCounter = 0;
 			list = new ArrayList<>();
 		}
-		if (chart.getData().size() == 1)
+		if (chart.getData() != null && chart.getData().size() == 1)
 			chart.getData().remove(0);
 		if (selectedSize.getValue() == null)
 			return;
-		Integer size = selectedSize.getValue();
-		array = new int[size];
 
-		XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
-		for (int i = 0; i < size; i++) {
-			Random r = new Random();
-			array[i] = r.nextInt(100)/* + 1 */;
-			series.getData().add(new XYChart.Data<String, Number>(String.valueOf(i), array[i]));
-		}
-		
-		chart.getData().add(series);
-		for (XYChart.Data<String, Number> data : chart.getData().get(0).getData()) {
-			data.getNode().setStyle("-fx-background-color: " + Colors.DEFAULT + ";");
+		array = new int[selectedSize.getValue()];
+		chart.getData().add(new Series<String, Number>());
+		for (int i = 0; i < selectedSize.getValue(); i++) {
+			array[i] = new Random().nextInt(100);
+			chart.getData().get(0).getData().add(new XYChart.Data<String, Number>(String.valueOf(i), array[i]));
+			chart.getData().get(0).getData().get(i).getNode().setStyle(Constraints.DEFAULTCSSCOLORCOMMAND);
 		}
 	}
 
@@ -149,50 +134,52 @@ public class StartController extends UpdateGraphThread {
 	 */
 	@FXML
 	public void sort() {
-		String sort = selectedSort.getValue();
-		if (chart.getData().size() == 0)
+		if (chart.getData() != null && chart.getData().size() == 0)
 			return;
+		
+		String sort = selectedSort.getValue();
+		int size = selectedSize.getValue();
 
 		if (sort.equals("Bubble"))
 			BubbleSort.bubbleSort(array, chart);
 		else if (sort.equals("Selection"))
 			SelectionSort.selectionSort(array, chart);
 		else if (sort.equals("Recursive Bubble"))
-			BubbleSort.bubbleSortRecursively(array, chart, selectedSize.getValue());
+			BubbleSort.bubbleSortRecursively(array, chart, size);
 		else if (sort.equals("Insertion"))
 			InsertionSort.insertionSort(array, chart);
 		else if (sort.equals("Recursive Insertion"))
-			InsertionSort.insertionSortRecursively(array, chart, selectedSize.getValue());
+			InsertionSort.insertionSortRecursively(array, chart, size);
 		else if (sort.equals("Merge"))
-			MergeSort.mergeSort(array, chart, 0, selectedSize.getValue() - 1);
+			MergeSort.mergeSort(array, chart, 0, size - 1);
 		else if (sort.equals("Iterative Merge"))
 			MergeSort.iterativeMergeSort(array, chart);
 		else if (sort.equals("Quick"))
-			QuickSort.quickSort(array, chart, 0, selectedSize.getValue() - 1);
+			QuickSort.quickSort(array, chart, 0, size - 1);
 		else if (sort.equals("Iterative Quick"))
-			QuickSort.iterativeQuickSort(array, chart, 0, selectedSize.getValue() - 1);
+			QuickSort.iterativeQuickSort(array, chart, 0, size - 1);
 		else if (sort.equals("Heap"))
 			HeapSort.heapSort(array, chart);
 		else if (sort.equals("Counting"))
 			CountingSort.countingSort(array, chart);
 		else if (sort.equals("Radix"))
-			RadixSort.radixSort(array, chart, selectedSize.getValue());
+			RadixSort.radixSort(array, chart, size);
 		else if (sort.equals("Bucket"))
-			BucketSort.bucketSort(array, chart, selectedSize.getValue());
+			BucketSort.bucketSort(array, chart, size);
 		else if (sort.equals("ShellSort"))
 			ShellSort.shellSort(array, chart);
 		else if (sort.equals("TimSort"))
-			TimSort.timSort(array, selectedSize.getValue(), chart);
+			TimSort.timSort(array, chart, size);
 		else if (sort.equals("Comb"))
 			CombSort.combSort(array, chart);
 		else if (sort.equals("Pigeonhole"))
-			PigeonholeSort.pigeonholeSort(array, selectedSize.getValue(), chart);
+			PigeonholeSort.pigeonholeSort(array, chart, size);
 		else if (sort.equals("Cycle"))
-			CycleSort.cycleSort(array, selectedSize.getValue(), chart);
+			CycleSort.cycleSort(array, chart, size);
 
 		if (!useThread) {
 			list = new ArrayList<>();
-			for (int i = 0; i < selectedSize.getValue(); i++) {
+			for (int i = 0; i < size; i++) {
 				chart.getData().get(0).getData().get(i).setYValue(array[i]);
 			}
 		}
@@ -207,8 +194,7 @@ public class StartController extends UpdateGraphThread {
 			list = new ArrayList<>();
 			for (int i = 0; i < selectedSize.getValue(); i++) {
 				array[i] = (int) chart.getData().get(0).getData().get(i).getYValue();
-				chart.getData().get(0).getData().get(i).getNode()
-						.setStyle("-fx-background-color: " + Colors.DEFAULT + ";");
+				chart.getData().get(0).getData().get(i).getNode().setStyle(Constraints.DEFAULTCSSCOLORCOMMAND);
 			}
 			indexCounter = 0;
 		}
@@ -240,35 +226,51 @@ public class StartController extends UpdateGraphThread {
 	 */
 	public void initialize() {
 		yAxis.setUpperBound(100);
+		
 		chart.setAnimated(false);
 		chart.setHorizontalZeroLineVisible(false);
-		chart.setVerticalZeroLineVisible(false);
 		chart.setHorizontalGridLinesVisible(false);
+		chart.setVerticalZeroLineVisible(false);
 		chart.setVerticalGridLinesVisible(false);
-		chart.getYAxis().setAutoRanging(false);
 		chart.setCategoryGap(0);
 		chart.setBarGap(0);
 		chart.setLegendVisible(false);
+		chart.getYAxis().setAutoRanging(false);
 		chart.getYAxis().setTickLabelsVisible(false);
 		chart.getYAxis().setOpacity(0);
 		chart.getXAxis().setTickLabelsVisible(false);
 		chart.getXAxis().setOpacity(0);
-		
-		stopSortImage.setImage(new Image("file:././././img/blue-x.png"));
+
 		stopSortButton.setTooltip(new Tooltip("Stop sort"));
-		sortImage.setImage(new Image("file:././././img/blue-start.png"));
+		stopSortImage.setImage(new Image("file:././././img/blue-x.png"));
+
 		sortButton.setTooltip(new Tooltip("Start sort"));
+		sortImage.setImage(new Image("file:././././img/blue-start.png"));
+		
+		transitionSpeed.setMin(Constraints.MINTRANSITIONSPEED);
+		transitionSpeed.setMax(Constraints.MAXTRANSITIONSPEED);
 		transitionSpeed.addEventFilter(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
+			@Override
 			public void handle(MouseEvent e) {
-				updateThreadDelay((int)transitionSpeed.getValue(), chart);
+				updateThreadDelay((int) transitionSpeed.getValue(), chart);
 			}
 		});
-		transitionSpeed.setMin(MINTRANSITIONSPEED);
-		transitionSpeed.setMax(MAXTRANSITIONSPEED);
+
 		useThread = true;
-		selectedSize.setItems(FXCollections.observableArrayList(10, 100, 1000// ,
-		/* 10000, */
-		/* 100000 */));
+		noDelay.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				if (noDelay.isSelected()) {
+					transitionSpeed.setDisable(true);
+					useThread = false;
+				} else {
+					transitionSpeed.setDisable(false);
+					useThread = true;
+				}
+			}
+		});
+		
+		selectedSize.setItems(FXCollections.observableArrayList(10, 100, 1000));
 		selectedSize.setValue(10);
 
 		Set<String> set = new TreeSet<>();
@@ -312,21 +314,9 @@ public class StartController extends UpdateGraphThread {
 //		set.add("Merge for Linked Lists");
 //		set.add("Merge for Doubly Linked List");
 //		set.add("Three-way Merge))");
+		
 		selectedSort.setItems(FXCollections.observableArrayList(set));
 		selectedSort.setValue(set.iterator().next());
 		generateArray();
-
-		realTime.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				if (realTime.isSelected()) {
-					transitionSpeed.setDisable(true);
-					useThread = false;
-				} else {
-					transitionSpeed.setDisable(false);
-					useThread = true;
-				}
-			}
-		});
 	}
 }

@@ -11,6 +11,13 @@ import javafx.scene.chart.BarChart;
  *
  */
 public class CombSort extends UpdateGraphThread {
+
+	/**
+	 * Gets the next gap.
+	 *
+	 * @param gap the gap
+	 * @return the next gap
+	 */
 	private static int getNextGap(int gap) {
 		gap = (gap * 10) / 13;
 		if (gap < 1)
@@ -18,6 +25,12 @@ public class CombSort extends UpdateGraphThread {
 		return gap;
 	}
 
+	/**
+	 * Comb sort.
+	 *
+	 * @param arr   the arr
+	 * @param chart the chart
+	 */
 	public static void combSort(int arr[], BarChart<String, Number> chart) {
 		startThread(chart);
 		int n = arr.length;

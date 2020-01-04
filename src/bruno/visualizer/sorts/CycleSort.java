@@ -11,11 +11,16 @@ import javafx.scene.chart.BarChart;
  *
  */
 public class CycleSort extends UpdateGraphThread {
-	@SuppressWarnings("unused")
-	public static void cycleSort(int arr[], int n, BarChart<String, Number> chart) {
-		startThread(chart);
-		int writes = 0;
 
+	/**
+	 * Cycle sort.
+	 *
+	 * @param arr   the arr
+	 * @param chart the chart
+	 * @param n     the n
+	 */
+	public static void cycleSort(int arr[], BarChart<String, Number> chart, int n) {
+		startThread(chart);
 		for (int cycle_start = 0; cycle_start <= n - 2; cycle_start++) {
 			int item = arr[cycle_start];
 
@@ -35,8 +40,6 @@ public class CycleSort extends UpdateGraphThread {
 				item = arr[pos];
 				arr[pos] = temp;
 				list.add(new XYValue(pos, arr[pos]));
-
-				writes++;
 			}
 
 			while (pos != cycle_start) {
@@ -54,8 +57,6 @@ public class CycleSort extends UpdateGraphThread {
 					item = arr[pos];
 					arr[pos] = temp;
 					list.add(new XYValue(pos, arr[pos]));
-
-					writes++;
 				}
 			}
 		}

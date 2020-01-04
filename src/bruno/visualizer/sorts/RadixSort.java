@@ -13,12 +13,13 @@ import javafx.scene.chart.BarChart;
  *
  */
 public class RadixSort extends UpdateGraphThread {
+
 	/**
 	 * Method that searches for the maximum number and returns it.
-	 * 
+	 *
 	 * @param arr   array of integer values of the chart
-	 * @param chart chart that holds an array of integer values
 	 * @param n     array length
+	 * @param chart chart that holds an array of integer values
 	 * @return maximum number from the given array
 	 */
 	private static int getMax(int arr[], int n, BarChart<String, Number> chart) {
@@ -31,11 +32,11 @@ public class RadixSort extends UpdateGraphThread {
 
 	/**
 	 * Starts the radix-counting sort sequence.
-	 * 
+	 *
 	 * @param arr   array of integer values of the chart
 	 * @param n     array length
-	 * @param chart chart that holds an array of integer values
 	 * @param exp   digit representation
+	 * @param chart chart that holds an array of integer values
 	 */
 	private static void countingSort(int arr[], int n, int exp, BarChart<String, Number> chart) {
 		int output[] = new int[n];
@@ -66,10 +67,10 @@ public class RadixSort extends UpdateGraphThread {
 
 	/**
 	 * Starts the radix sort sequence.
-	 * 
+	 *
 	 * @param arr   array of integer values of the chart
-	 * @param n     array length
 	 * @param chart chart that holds an array of integer values
+	 * @param n     array length
 	 */
 	public static void radixSort(int arr[], BarChart<String, Number> chart, int n) {
 		startThread(chart);

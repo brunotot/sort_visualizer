@@ -13,7 +13,15 @@ import javafx.scene.chart.BarChart;
  *
  */
 public class PigeonholeSort extends UpdateGraphThread {
-	public static void pigeonholeSort(int arr[], int n, BarChart<String, Number> chart) {
+
+	/**
+	 * Pigeonhole sort.
+	 *
+	 * @param arr   the arr
+	 * @param chart the chart
+	 * @param n     the n
+	 */
+	public static void pigeonholeSort(int arr[], BarChart<String, Number> chart, int n) {
 		startThread(chart);
 		int min = arr[0];
 		int max = arr[0];
