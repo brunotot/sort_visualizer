@@ -53,6 +53,7 @@ public class UpdateGraphThread {
 	 * state).
 	 */
 	protected static boolean stopThread() {
+		
 		if (scheduledExecutorService != null && !scheduledExecutorService.isShutdown()) {
 			scheduledExecutorService.shutdown();
 			return true;
@@ -82,6 +83,7 @@ public class UpdateGraphThread {
 					indexCounter = 0;
 					list = new ArrayList<>();
 					stopThread();
+					
 					return;
 				}
 
@@ -99,5 +101,17 @@ public class UpdateGraphThread {
 				indexCounter++;
 			});
 		}, INITIALDELAYMILLISECONDS, WAITMILLISECONDS, TimeUnit.MILLISECONDS);
+	}
+	
+	/**
+	 * Modifies the delay speed.
+	 * 
+	 * @param milliseconds delay milliseconds
+	 * @param chart chart that holds an array of integer values
+	 */
+	protected static void updateThreadDelay(int milliseconds, BarChart<String, Number> chart) {
+		stopThread();
+		WAITMILLISECONDS = milliseconds;
+		startThread(chart);
 	}
 }

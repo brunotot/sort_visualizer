@@ -137,7 +137,7 @@ public class StartController extends UpdateGraphThread {
 			array[i] = r.nextInt(100)/* + 1 */;
 			series.getData().add(new XYChart.Data<String, Number>(String.valueOf(i), array[i]));
 		}
-
+		
 		chart.getData().add(series);
 		for (XYChart.Data<String, Number> data : chart.getData().get(0).getData()) {
 			data.getNode().setStyle("-fx-background-color: " + Colors.DEFAULT + ";");
@@ -253,12 +253,16 @@ public class StartController extends UpdateGraphThread {
 		chart.getYAxis().setOpacity(0);
 		chart.getXAxis().setTickLabelsVisible(false);
 		chart.getXAxis().setOpacity(0);
-
+		
 		stopSortImage.setImage(new Image("file:././././img/blue-x.png"));
 		stopSortButton.setTooltip(new Tooltip("Stop sort"));
 		sortImage.setImage(new Image("file:././././img/blue-start.png"));
 		sortButton.setTooltip(new Tooltip("Start sort"));
-
+		transitionSpeed.addEventFilter(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent e) {
+				updateThreadDelay((int)transitionSpeed.getValue(), chart);
+			}
+		});
 		transitionSpeed.setMin(MINTRANSITIONSPEED);
 		transitionSpeed.setMax(MAXTRANSITIONSPEED);
 		useThread = true;
