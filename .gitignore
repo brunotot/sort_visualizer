@@ -1,6 +1,14 @@
 .settings
+<<<<<<< HEAD
 .project
 .classpath
 bin
 build.fxbuild
 target
+=======
+bin
+target
+.classpath
+.project
+build.fxbuild
+>>>>>>> master
