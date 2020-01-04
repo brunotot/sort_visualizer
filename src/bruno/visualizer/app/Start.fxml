@@ -16,9 +16,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="bruno.visualizer.app.StartController">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bruno.visualizer.app.StartController">
 	<center>
 		<BarChart fx:id="chart" BorderPane.alignment="CENTER">
 			<xAxis>
@@ -35,66 +33,44 @@
 	<bottom>
 		<GridPane BorderPane.alignment="CENTER">
 			<columnConstraints>
-				<ColumnConstraints hgrow="SOMETIMES"
-					maxWidth="140.0" />
-				<ColumnConstraints hgrow="SOMETIMES"
-					maxWidth="120.0" />
+				<ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" />
+				<ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" />
 				<ColumnConstraints hgrow="SOMETIMES" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="30.0"
-					vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0"
-					vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0"
-					vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0"
-					vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Button fx:id="sortButton" maxHeight="30.0" maxWidth="30.0"
-					mnemonicParsing="false" onAction="#sort" prefHeight="30.0"
-					prefWidth="30.0" GridPane.columnSpan="3"
-					GridPane.halignment="CENTER" GridPane.rowIndex="3"
-					GridPane.valignment="BOTTOM">
+				<Button fx:id="sortButton" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onAction="#sort" prefHeight="30.0" prefWidth="30.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
 					<GridPane.margin>
 						<Insets bottom="-15.0" right="40.0" />
 					</GridPane.margin>
 					<graphic>
-						<ImageView fx:id="sortImage" fitHeight="26.0"
-							fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
+						<ImageView fx:id="sortImage" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
 					</graphic>
 					<padding>
 						<Insets top="1.0" />
 					</padding>
 				</Button>
-				<ComboBox fx:id="selectedSort" prefHeight="25.0"
-					prefWidth="144.0" GridPane.columnIndex="1"
-					GridPane.halignment="LEFT" GridPane.rowIndex="1">
+				<ComboBox fx:id="selectedSort" prefHeight="25.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
 					<GridPane.margin>
 						<Insets left="2.0" />
 					</GridPane.margin>
 				</ComboBox>
-				<Label text="Sort algorithm: " GridPane.halignment="RIGHT"
-					GridPane.rowIndex="1" />
-				<Slider fx:id="transitionSpeed" maxWidth="148.0"
-					prefWidth="144.0" GridPane.columnIndex="1"
-					GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
-				<CheckBox fx:id="realTime" mnemonicParsing="false"
-					text="No delay" GridPane.columnIndex="2">
+				<Label text="Sort algorithm: " GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+				<Slider fx:id="transitionSpeed" maxWidth="148.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+				<CheckBox fx:id="realTime" mnemonicParsing="false" text="No delay" GridPane.columnIndex="2">
 					<GridPane.margin>
 						<Insets left="10.0" />
 					</GridPane.margin>
 				</CheckBox>
 				<Label text="Transition speed: " GridPane.halignment="RIGHT" />
-				<Button fx:id="stopSortButton" maxHeight="30.0"
-					maxWidth="30.0" mnemonicParsing="false" onAction="#stopSort"
-					prefHeight="30.0" prefWidth="30.0" GridPane.columnSpan="3"
-					GridPane.halignment="CENTER" GridPane.rowIndex="3"
-					GridPane.valignment="BOTTOM">
+				<Button fx:id="stopSortButton" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onAction="#stopSort" prefHeight="30.0" prefWidth="30.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
 					<graphic>
-						<ImageView fx:id="stopSortImage" fitHeight="26.0"
-							fitWidth="26.0" pickOnBounds="true">
+						<ImageView fx:id="stopSortImage" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true">
 							<viewport>
 								<Rectangle2D />
 							</viewport>
@@ -107,18 +83,13 @@
 						<Insets top="1.0" />
 					</padding>
 				</Button>
-				<ComboBox fx:id="selectedSize" prefHeight="25.0"
-					prefWidth="163.0" GridPane.columnIndex="1"
-					GridPane.halignment="LEFT" GridPane.rowIndex="2">
+				<ComboBox fx:id="selectedSize" prefHeight="25.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
 					<GridPane.margin>
 						<Insets left="2.0" />
 					</GridPane.margin>
 				</ComboBox>
-				<Label text="Array size: " GridPane.halignment="RIGHT"
-					GridPane.rowIndex="2" />
-				<Button mnemonicParsing="false" onAction="#generateArray"
-					text="Generate array" GridPane.columnIndex="2"
-					GridPane.halignment="LEFT" GridPane.rowIndex="2">
+				<Label text="Array size: " GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+				<Button mnemonicParsing="false" onAction="#generateArray" text="Generate array" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2">
 					<GridPane.margin>
 						<Insets left="10.0" />
 					</GridPane.margin>
