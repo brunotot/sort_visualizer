@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"bruno.visualizer.app"},{"l":"bruno.visualizer.sorts"},{"l":"bruno.visualizer.sorts.util"},{"l":"bruno.visualizer.util"}]
