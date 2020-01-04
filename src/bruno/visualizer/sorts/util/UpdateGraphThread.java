@@ -69,8 +69,6 @@ public class UpdateGraphThread {
 	 * @param chart the chart that needs to be updated
 	 */
 	protected static void startThread(BarChart<String, Number> chart) {
-		if(!scheduledExecutorService.isTerminated())
-			return;
 		if (chart == null)
 			return;
 		Slider transitionSpeed = (Slider) Main.getRoot().lookup("#transitionSpeed");
