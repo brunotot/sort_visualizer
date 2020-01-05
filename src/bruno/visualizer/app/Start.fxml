@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -10,7 +9,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -20,7 +18,7 @@
 	<center>
 		<BarChart fx:id="chart" BorderPane.alignment="CENTER">
 			<xAxis>
-				<CategoryAxis side="BOTTOM" fx:id="xAxis" />
+				<CategoryAxis side="BOTTOM" />
 			</xAxis>
 			<yAxis>
 				<NumberAxis fx:id="yAxis" side="LEFT" />
@@ -48,9 +46,6 @@
 					<GridPane.margin>
 						<Insets bottom="-15.0" right="40.0" />
 					</GridPane.margin>
-					<graphic>
-						<ImageView fx:id="sortImage" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
-					</graphic>
 					<padding>
 						<Insets top="1.0" />
 					</padding>
@@ -69,13 +64,6 @@
 				</CheckBox>
 				<Label text="Transition speed: " GridPane.halignment="RIGHT" />
 				<Button fx:id="stopSortButton" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onAction="#stopSort" prefHeight="30.0" prefWidth="30.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
-					<graphic>
-						<ImageView fx:id="stopSortImage" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true">
-							<viewport>
-								<Rectangle2D />
-							</viewport>
-						</ImageView>
-					</graphic>
 					<GridPane.margin>
 						<Insets bottom="-15.0" left="40.0" />
 					</GridPane.margin>

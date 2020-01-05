@@ -48,7 +48,7 @@ public class UpdateGraphThread {
 	 *
 	 * @return true, if successful
 	 */
-	protected static boolean stopThread() {
+	public static boolean stopThread() {
 
 		if (scheduledExecutorService != null && !scheduledExecutorService.isShutdown()) {
 			scheduledExecutorService.shutdown();

@@ -1,10 +1,13 @@
 package bruno.visualizer.app;
 
+import bruno.visualizer.sorts.util.UpdateGraphThread;
+import bruno.visualizer.util.Constraints;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
@@ -13,17 +16,19 @@ import javafx.stage.Stage;
  * @author TotB
  */
 public class Main extends Application {
+	public static Stage stage;
+	
 	/**
 	 * Static main BorderPane window object.
 	 */
-	public static BorderPane root;
+	public static HBox root;
 
 	/**
 	 * Getter method for main BorderPane object.
 	 * 
 	 * @return main BorderPane object
 	 */
-	public static BorderPane getRoot() {
+	public static HBox getRoot() {
 		return root;
 	}
 	
@@ -35,12 +40,18 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			root = (BorderPane) FXMLLoader.load(getClass().getResource("Start.fxml"));
-			Scene scene = new Scene(root, 400, 400);
+			Scene scene = new Scene(new HBox(), Constraints.STARTWINDOWWIDTH, Constraints.STARTWINDOWHEIGHT);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.getIcons().add(new Image("file:img\\logo.png"));
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			stage = primaryStage;
+			stage.getIcons().add(new Image("file:img\\logo.png"));
+			stage.setScene(scene);
+			
+			root = (HBox) FXMLLoader.load(getClass().getResource("Index.fxml"));
+			scene.setRoot(root);
+			stage.getIcons().add(new Image("file:img\\logo.png"));
+			stage.setScene(scene);
+			stage.setOnHiding(event -> UpdateGraphThread.stopThread());
+			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -53,5 +64,15 @@ public class Main extends Application {
 	 */
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public static void setPane(Node pane) {
+		if(root.getChildren() != null && root.getChildren().size() == 2)
+			root.getChildren().remove(1);
+		root.getChildren().add(pane);
+	}
+
+	public static Stage getStage() {
+		return stage;
 	}
 }

@@ -37,4 +37,8 @@ public class Constraints {
 	 * Holds the value of CSS command for setting up default color configuration.
 	 */
 	public static final String DEFAULTCSSCOLORCOMMAND = "-fx-background-color: " + DEFAULT + ";";
+
+	public static final Integer STARTWINDOWHEIGHT = 400;
+	
+	public static final Integer STARTWINDOWWIDTH = 400;
 }

@@ -20,6 +20,7 @@ import bruno.visualizer.sorts.SelectionSort;
 import bruno.visualizer.sorts.ShellSort;
 import bruno.visualizer.sorts.TimSort;
 import bruno.visualizer.sorts.util.UpdateGraphThread;
+import bruno.visualizer.util.ActionsUtil;
 import bruno.visualizer.util.Constraints;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
@@ -34,7 +35,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -44,12 +44,6 @@ import javafx.scene.input.MouseEvent;
  *
  */
 public class StartController extends UpdateGraphThread {
-	/**
-	 * Image to be displayed on button.
-	 */
-	@FXML
-	private ImageView stopSortImage;
-
 	/**
 	 * Check box for starting/not starting the thread for slowing the sorting
 	 * sequence for user to see.
@@ -68,12 +62,6 @@ public class StartController extends UpdateGraphThread {
 	 */
 	@FXML
 	private Button sortButton;
-
-	/**
-	 * Image to be displayed on button.
-	 */
-	@FXML
-	private ImageView sortImage;
 
 	/**
 	 * Button for stopping sort sequence if in progress.
@@ -242,10 +230,10 @@ public class StartController extends UpdateGraphThread {
 		chart.getXAxis().setOpacity(0);
 
 		stopSortButton.setTooltip(new Tooltip("Stop sort"));
-		stopSortImage.setImage(new Image("file:././././img/blue-x.png"));
+        ActionsUtil.setImage(stopSortButton, new Image("file:././././img/blue-x.png"), 26, 26);
 
 		sortButton.setTooltip(new Tooltip("Start sort"));
-		sortImage.setImage(new Image("file:././././img/blue-start.png"));
+        ActionsUtil.setImage(sortButton, new Image("file:././././img/blue-start.png"), 26, 26);
 		
 		transitionSpeed.setMin(Constraints.MINTRANSITIONSPEED);
 		transitionSpeed.setMax(Constraints.MAXTRANSITIONSPEED);

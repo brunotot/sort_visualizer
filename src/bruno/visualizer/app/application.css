@@ -1,5 +1,5 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-.button {
+.button{
 	-fx-border-color: grey;
 	-fx-border-width: 2.0px;
 	-fx-border-radius: 2.0px;
