@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bruno.visualizer.app.StartController">
@@ -50,19 +51,6 @@
 						<Insets top="1.0" />
 					</padding>
 				</Button>
-				<ComboBox fx:id="selectedSort" prefHeight="25.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
-					<GridPane.margin>
-						<Insets left="2.0" />
-					</GridPane.margin>
-				</ComboBox>
-				<Label text="Sort algorithm: " GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-				<Slider fx:id="transitionSpeed" maxWidth="148.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
-				<CheckBox fx:id="noDelay" mnemonicParsing="false" text="No delay" GridPane.columnIndex="2">
-					<GridPane.margin>
-						<Insets left="10.0" />
-					</GridPane.margin>
-				</CheckBox>
-				<Label text="Transition speed: " GridPane.halignment="RIGHT" />
 				<Button fx:id="stopSortButton" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onAction="#stopSort" prefHeight="30.0" prefWidth="30.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
 					<GridPane.margin>
 						<Insets bottom="-15.0" left="40.0" />
@@ -71,17 +59,44 @@
 						<Insets top="1.0" />
 					</padding>
 				</Button>
-				<ComboBox fx:id="selectedSize" prefHeight="25.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
-					<GridPane.margin>
-						<Insets left="2.0" />
-					</GridPane.margin>
-				</ComboBox>
-				<Label text="Array size: " GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-				<Button mnemonicParsing="false" onAction="#generateArray" text="Generate array" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2">
-					<GridPane.margin>
-						<Insets left="10.0" />
-					</GridPane.margin>
-				</Button>
+            <HBox alignment="CENTER" minWidth="300.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+      				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" minWidth="-Infinity" prefWidth="100.0" text="Transition speed: " />
+      				<Slider fx:id="transitionSpeed" minWidth="-Infinity" prefWidth="100.0">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin></Slider>
+      				<CheckBox fx:id="noDelay" minWidth="-Infinity" mnemonicParsing="false" prefWidth="100.0" text="No delay">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></CheckBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" minWidth="300.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <children>
+      				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" minWidth="-Infinity" prefWidth="100.0" text="Sort algorithm: " />
+      				<ComboBox fx:id="selectedSort" minWidth="-Infinity" prefWidth="100.0">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin></ComboBox>
+                  <Label minWidth="-Infinity" prefWidth="100.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" minWidth="300.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <children>
+      				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" minWidth="-Infinity" prefWidth="100.0" text="Array size: " />
+      				<ComboBox fx:id="selectedSize" minWidth="-Infinity" prefWidth="100.0">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin></ComboBox>
+      				<Button minWidth="-Infinity" mnemonicParsing="false" onAction="#generateArray" prefWidth="100.0" text="Generate array">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Button>
+               </children></HBox>
 			</children>
 			<BorderPane.margin>
 				<Insets bottom="30.0" />

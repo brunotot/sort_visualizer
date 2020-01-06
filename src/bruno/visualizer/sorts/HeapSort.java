@@ -7,7 +7,7 @@ import javafx.scene.chart.BarChart;
 /**
  * Represents the heap sort class.
  * 
- * @author TotB
+ * @author Bruno
  *
  */
 public class HeapSort extends UpdateGraphThread {

@@ -40,7 +40,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * A controller class that controls Start.fxml.
  *
- * @author TotB
+ * @author Bruno
  *
  */
 public class StartController extends UpdateGraphThread {
@@ -113,7 +113,7 @@ public class StartController extends UpdateGraphThread {
 		for (int i = 0; i < selectedSize.getValue(); i++) {
 			array[i] = new Random().nextInt(100);
 			chart.getData().get(0).getData().add(new XYChart.Data<String, Number>(String.valueOf(i), array[i]));
-			chart.getData().get(0).getData().get(i).getNode().setStyle(Constraints.DEFAULTCSSCOLORCOMMAND);
+			chart.getData().get(0).getData().get(i).getNode().setStyle("-fx-background-color: " + Constraints.DEFAULT);
 		}
 	}
 
@@ -182,7 +182,7 @@ public class StartController extends UpdateGraphThread {
 			list = new ArrayList<>();
 			for (int i = 0; i < selectedSize.getValue(); i++) {
 				array[i] = (int) chart.getData().get(0).getData().get(i).getYValue();
-				chart.getData().get(0).getData().get(i).getNode().setStyle(Constraints.DEFAULTCSSCOLORCOMMAND);
+				chart.getData().get(0).getData().get(i).getNode().setStyle("-fx-background-color: " + Constraints.DEFAULT);
 			}
 			indexCounter = 0;
 		}

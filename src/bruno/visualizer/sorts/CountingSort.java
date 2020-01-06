@@ -9,7 +9,7 @@ import javafx.scene.chart.BarChart;
 /**
  * Represents the counting sort class.
  * 
- * @author TotB
+ * @author Bruno
  */
 public class CountingSort extends UpdateGraphThread {
 	/**

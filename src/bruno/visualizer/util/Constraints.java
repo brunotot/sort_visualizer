@@ -3,7 +3,7 @@ package bruno.visualizer.util;
 /**
  * Set of strings that represent CSS color commands.
  * 
- * @author TotB
+ * @author Bruno
  */
 public class Constraints {
 	/**
@@ -31,14 +31,22 @@ public class Constraints {
 	 * Holds integer information of how many milliseconds does it take to actually
 	 * start the sorting sequence.
 	 */
-	public static final Integer INITIALDELAYMILLISECONDS = 10;
-	
-	/**
-	 * Holds the value of CSS command for setting up default color configuration.
-	 */
-	public static final String DEFAULTCSSCOLORCOMMAND = "-fx-background-color: " + DEFAULT + ";";
+	public static final int INITIALDELAYMILLISECONDS = 10;
 
-	public static final Integer STARTWINDOWHEIGHT = 400;
+	/**
+	 * Standard height of starting window.
+	 */
+	public static final int STARTWINDOWHEIGHT = 400;
+
+	/**
+	 * Standard width of starting window.
+	 */
+	public static final int STARTWINDOWWIDTH = 400;
+
+	/**
+	 * Standard width of menu button.
+	 */
+	public static final int MENUBUTTONWIDTH = 26;
 	
-	public static final Integer STARTWINDOWWIDTH = 400;
+	public static final int MENUBUTTONHEIGHT = 26;
 }

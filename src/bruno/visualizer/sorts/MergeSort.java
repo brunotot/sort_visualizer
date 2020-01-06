@@ -7,7 +7,7 @@ import javafx.scene.chart.BarChart;
 /**
  * Represents the merge sort class.
  * 
- * @author TotB
+ * @author Bruno
  *
  */
 public class MergeSort extends UpdateGraphThread {

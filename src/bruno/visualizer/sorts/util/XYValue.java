@@ -3,7 +3,7 @@ package bruno.visualizer.sorts.util;
 /**
  * Represents a class that holds X-axis and Y-axis values.
  * 
- * @author TotB
+ * @author Bruno
  */
 public class XYValue {
 	/**

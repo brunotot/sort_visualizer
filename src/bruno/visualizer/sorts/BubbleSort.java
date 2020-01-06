@@ -7,7 +7,7 @@ import javafx.scene.chart.BarChart;
 /**
  * Represents the bubble sort class.
  * 
- * @author TotB
+ * @author Bruno
  *
  */
 public class BubbleSort extends UpdateGraphThread {

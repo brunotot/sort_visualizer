@@ -7,7 +7,7 @@ import javafx.scene.chart.BarChart;
 /**
  * Represents the insertion sort class.
  * 
- * @author TotB
+ * @author Bruno
  */
 public class InsertionSort extends UpdateGraphThread {
 	/**

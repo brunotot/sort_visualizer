@@ -15,7 +15,7 @@ import javafx.scene.control.Slider;
 /**
  * Represents a static class that's used for threading the update of the chart.
  * 
- * @author TotB
+ * @author Bruno
  *
  */
 public class UpdateGraphThread {

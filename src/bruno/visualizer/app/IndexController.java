@@ -3,6 +3,7 @@ package bruno.visualizer.app;
 import java.io.IOException;
 
 import bruno.visualizer.util.ActionsUtil;
+import bruno.visualizer.util.Constraints;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -11,10 +12,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-// TODO FIX RESIZING WINDOW PROBLEM
-// TODO EDIT CSS ON VBOX
-
+/**
+ * A controller class that controls Index.fxml.
+ * 
+ * @author Bruno
+ *
+ */
 public class IndexController {
+	/**
+	 * Opens new window by clicking on certain button.
+	 */
 	@FXML
 	public void openStart() {
 		try {
@@ -24,28 +31,54 @@ public class IndexController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * Vertical menu on the left side of the starting window.
+	 */
+	@FXML
+	private VBox verticalMenu;
 	
-	@FXML private VBox menuExpanded;
-	@FXML private Button menu;
-	@FXML private Button comparison;
-	@FXML private Button statistics;
-	@FXML private Button sortVisualizer;
-	
+	/**
+	 * Menu button placed in verticalMenu VBox container.
+	 */
+	@FXML
+	private Button menu;
+
+	/**
+	 * Comparison button placed in verticalMenu VBox container.
+	 */
+	@FXML
+	private Button comparison;
+
+	/**
+	 * Statistics button placed in verticalMenu VBox container.
+	 */
+	@FXML
+	private Button statistics;
+
+	/**
+	 * Sort visualizer button placed in verticalMenu VBox container.
+	 */
+	@FXML
+	private Button sortVisualizer;
+
+	/**
+	 * An initializer for IndexController.java.
+	 */
 	public void initialize() {
-		comparison.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-		statistics.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-		sortVisualizer.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-		
+		menu.setMaxHeight(Double.MAX_VALUE);
+		comparison.setMaxHeight(Double.MAX_VALUE);
+		statistics.setMaxHeight(Double.MAX_VALUE);
+		sortVisualizer.setMaxHeight(Double.MAX_VALUE);
+
 		VBox.setVgrow(menu, Priority.ALWAYS);
 		VBox.setVgrow(comparison, Priority.ALWAYS);
 		VBox.setVgrow(statistics, Priority.ALWAYS);
 		VBox.setVgrow(sortVisualizer, Priority.ALWAYS);
-		
-        ActionsUtil.setImage(menu, new Image("file:././././img/blue-menu.png"), 26, 26);
-        ActionsUtil.setImage(comparison, new Image("file:././././img/blue-x.png"), 26, 26);
-        ActionsUtil.setImage(sortVisualizer, new Image("file:././././img/blue-start.png"), 26, 26);
-        ActionsUtil.setImage(statistics, new Image("file:././././img/blue-menu.png"), 26, 26);
 
-		menuExpanded.prefHeightProperty().bind(Main.getStage().getScene().heightProperty());
+		ActionsUtil.setImage(menu, new Image("file:././././img/blue-menu.png"), Constraints.MENUBUTTONWIDTH, Constraints.MENUBUTTONHEIGHT);
+		ActionsUtil.setImage(comparison, new Image("file:././././img/blue-x.png"), Constraints.MENUBUTTONWIDTH, Constraints.MENUBUTTONHEIGHT);
+		ActionsUtil.setImage(sortVisualizer, new Image("file:././././img/blue-start.png"), Constraints.MENUBUTTONWIDTH, Constraints.MENUBUTTONHEIGHT);
+		ActionsUtil.setImage(statistics, new Image("file:././././img/blue-menu.png"), Constraints.MENUBUTTONWIDTH, Constraints.MENUBUTTONHEIGHT);
 	}
-}	
+}

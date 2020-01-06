@@ -9,7 +9,7 @@ import javafx.scene.chart.BarChart;
 /**
  * Represents the radix sort class.
  * 
- * @author TotB
+ * @author Bruno
  *
  */
 public class RadixSort extends UpdateGraphThread {

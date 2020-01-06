@@ -7,7 +7,7 @@ import javafx.scene.chart.BarChart;
 /**
  * Represents the quick sort class.
  * 
- * @author TotB
+ * @author Bruno
  */
 public class QuickSort extends UpdateGraphThread {
 

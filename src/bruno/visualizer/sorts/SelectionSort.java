@@ -7,7 +7,7 @@ import javafx.scene.chart.BarChart;
 /**
  * Represents the selection sort class.
  * 
- * @author TotB
+ * @author Bruno
  */
 public class SelectionSort extends UpdateGraphThread {
 	/**
