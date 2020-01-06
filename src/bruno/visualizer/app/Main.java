@@ -60,6 +60,7 @@ public class Main extends Application {
 			root = (BorderPane) FXMLLoader.load(getClass().getResource("Index.fxml"));
 			Scene scene = new Scene(root, Constraints.STARTWINDOWWIDTH, Constraints.STARTWINDOWHEIGHT);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			stage.setTitle("Sort visualizer");
 			stage.setScene(scene);
 			stage.setOnHiding(event -> UpdateGraphThread.stopThread());
 			stage.show();
