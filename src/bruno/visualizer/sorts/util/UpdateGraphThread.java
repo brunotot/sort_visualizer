@@ -10,6 +10,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import bruno.visualizer.app.Main;
+import bruno.visualizer.app.StartController;
 import bruno.visualizer.util.Constraints;
 import javafx.application.Platform;
 import javafx.scene.chart.BarChart;
@@ -52,7 +53,6 @@ public class UpdateGraphThread {
 	 * @return true, if successful
 	 */
 	public static boolean stopThread() {
-
 		if (scheduledExecutorService != null && !scheduledExecutorService.isShutdown()) {
 			scheduledExecutorService.shutdown();
 			return true;
@@ -82,7 +82,7 @@ public class UpdateGraphThread {
 					indexCounter = 0;
 					list = new ArrayList<>();
 					stopThread();
-
+					StartController.setCurrentlySorting(false);
 					return;
 				}
 

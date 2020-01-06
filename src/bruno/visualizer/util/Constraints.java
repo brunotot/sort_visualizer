@@ -13,6 +13,11 @@ public class Constraints {
 	 * Default color used to initialize the first color that user sees.
 	 */
 	public static final String DEFAULT = "rgb(242,97,45)";
+	
+	/**
+	 * Default background color.
+	 */
+	public static final String BACKGROUNDCOLOR = "rgb(244,244,244)";
 
 	/**
 	 * Color that user sees when a certain element of array changes.
@@ -38,12 +43,12 @@ public class Constraints {
 	/**
 	 * Standard height of starting window.
 	 */
-	public static final int STARTWINDOWHEIGHT = 400;
+	public static final int STARTWINDOWHEIGHT = 500;
 
 	/**
 	 * Standard width of starting window.
 	 */
-	public static final int STARTWINDOWWIDTH = 400;
+	public static final int STARTWINDOWWIDTH = 600;
 
 	/**
 	 * Standard width of box button.

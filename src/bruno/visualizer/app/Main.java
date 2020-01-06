@@ -10,7 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
@@ -32,21 +32,21 @@ public class Main extends Application {
 	public static Stage getStage() {
 		return stage;
 	}
-	
+
 	/**
 	 * Static main BorderPane window object.
 	 */
-	public static GridPane root;
+	public static BorderPane root;
 
 	/**
 	 * Getter method for main BorderPane object.
 	 * 
 	 * @return main BorderPane object
 	 */
-	public static GridPane getRoot() {
+	public static BorderPane getRoot() {
 		return root;
 	}
-	
+
 	/**
 	 * Method gets called upon launch() to start the primary stage.
 	 *
@@ -57,7 +57,7 @@ public class Main extends Application {
 		try {
 			stage = primaryStage;
 			stage.getIcons().add(new Image("file:img\\logo.png"));
-			root = (GridPane) FXMLLoader.load(getClass().getResource("Index.fxml"));
+			root = (BorderPane) FXMLLoader.load(getClass().getResource("Index.fxml"));
 			Scene scene = new Scene(root, Constraints.STARTWINDOWWIDTH, Constraints.STARTWINDOWHEIGHT);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stage.setScene(scene);
@@ -76,16 +76,22 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
-	/**
-	 * Replaces second child (right side of window) with another child parameter.
-	 * 
-	 * @param pane node object to be replaced with the old node on root.getChildren().get(1)
-	 */
-	public static void setPane(Node pane) {
-		if(root.getChildren() != null && root.getChildren().size() == 2)
-			root.getChildren().remove(1);
-		root.getChildren().add(pane);
-	}
 
+	/**
+	 * Adds node to center of main window.
+	 * 
+	 * @param pane node object to be replaced with the old node on center
+	 */
+	public static void setPane(Node pane, String side) {
+		if (side.equals("center"))
+			root.setCenter(pane);
+		else if (side.equals("left"))
+			root.setLeft(pane);
+		else if (side.equals("top"))
+			root.setTop(pane);
+		else if (side.equals("right"))
+			root.setRight(pane);
+		else
+			root.setBottom(pane);
+	}
 }

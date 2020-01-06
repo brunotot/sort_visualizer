@@ -34,7 +34,7 @@ public class IndexController {
 	public void openStart() {
 		try {
 			BorderPane centerPane = (BorderPane) FXMLLoader.load(getClass().getResource("Start.fxml"));
-			Main.setPane(centerPane);
+			Main.setPane(centerPane, "center");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -58,13 +58,47 @@ public class IndexController {
 				Constraints.BOXBUTTONWIDTH, Constraints.BOXBUTTONHEIGHT)), "comparison");
 		addNodeToVerticalMenu(new Button("", ActionsUtil.getGraphic(new Image("file:././././img/blue-start.png"),
 				Constraints.BOXBUTTONWIDTH, Constraints.BOXBUTTONHEIGHT)), "sortVisualizer");
-		addNodeToVerticalMenu(new Button("", ActionsUtil.getGraphic(new Image("file:././././img/blue-x.png"),
-				Constraints.BOXBUTTONWIDTH, Constraints.BOXBUTTONHEIGHT)), "testButton");
+		addNodeToVerticalMenu(new Button("", ActionsUtil.getGraphic(new Image("file:././././img/blue-forward.png"),
+				Constraints.BOXBUTTONWIDTH, Constraints.BOXBUTTONHEIGHT)), "expansionButton");
+
+		verticalMenu.getChildren().forEach(child -> {
+			child.getStyleClass().add("menu_button");
+			child.setStyle("-fx-background-color: " + Constraints.BACKGROUNDCOLOR);
+		});
 
 		verticalMenu.getChildren().get(getIndexById(verticalMenu.getChildren(), "sortVisualizer"))
 				.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 					public void handle(MouseEvent e) {
 						openStart();
+					};
+				});
+
+		verticalMenu.getChildren().get(getIndexById(verticalMenu.getChildren(), "expansionButton"))
+				.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+					public void handle(MouseEvent e) {
+						if (!((Button) verticalMenu.getChildren().get(0)).getText().equals("")) {
+							for (Node child : verticalMenu.getChildren()) {
+								if (child.getId().equals("expansionButton")) {
+									((Button) child).setGraphic(
+											ActionsUtil.getGraphic(new Image("file:././././img/blue-forward.png"),
+													Constraints.BOXBUTTONWIDTH, Constraints.BOXBUTTONHEIGHT));
+									break;
+								}
+								Button button = (Button) child;
+								button.setText("");
+							}
+						} else {
+							for (Node child : verticalMenu.getChildren()) {
+								if (child.getId().equals("expansionButton")) {
+									((Button) child).setGraphic(
+											ActionsUtil.getGraphic(new Image("file:././././img/blue-backward.png"),
+													Constraints.BOXBUTTONWIDTH, Constraints.BOXBUTTONHEIGHT));
+									break;
+								}
+								Button button = (Button) child;
+								button.setText(child.getId());
+							}
+						}
 					};
 				});
 	}

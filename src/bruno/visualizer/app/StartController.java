@@ -102,6 +102,7 @@ public class StartController extends UpdateGraphThread {
 	 */
 	@FXML
 	public void generateArray() {
+		setCurrentlySorting(false);
 		if (stopThread()) {
 			indexCounter = 0;
 			list = new ArrayList<>();
@@ -121,13 +122,30 @@ public class StartController extends UpdateGraphThread {
 	}
 
 	/**
+	 * Holds the value of true/false whether the program is currently in the sorting state.
+	 */
+	public static boolean currentlySorting = false;
+
+	/**
+	 * Sets new value to the currentlySorting boolean object.
+	 * 
+	 * @param currentlySorting true or false depending on state of sort program.
+	 */
+	public static void setCurrentlySorting(boolean currentlySorting) {
+		StartController.currentlySorting = currentlySorting;
+	}
+
+	/**
 	 * Starts the sorting sequence.
 	 */
 	@FXML
 	public void sort() {
+		if(currentlySorting)
+			return;
 		if (chart.getData() != null && chart.getData().size() == 0)
 			return;
 		
+		currentlySorting = true;
 		String sort = selectedSort.getValue();
 		int size = selectedSize.getValue();
 
