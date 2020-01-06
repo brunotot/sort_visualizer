@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package bruno.visualizer.util;
 
 import javafx.scene.control.Labeled;

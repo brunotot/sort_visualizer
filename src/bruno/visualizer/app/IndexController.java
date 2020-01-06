@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package bruno.visualizer.app;
 
 import java.io.IOException;

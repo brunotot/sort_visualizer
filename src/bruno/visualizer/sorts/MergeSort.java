@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package bruno.visualizer.sorts;
 
 import bruno.visualizer.sorts.util.UpdateGraphThread;

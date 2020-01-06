@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package bruno.visualizer.sorts.util;
 
 /**
