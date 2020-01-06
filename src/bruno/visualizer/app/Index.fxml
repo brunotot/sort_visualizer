@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bruno.visualizer.app.IndexController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Button fx:id="menu" alignment="CENTER" mnemonicParsing="false" />
+            <VBox fx:id="menuExpanded" maxWidth="46.0" minHeight="375.0" prefWidth="46.0">
+               <children>
+                  <Button fx:id="statistics" maxWidth="46.0" mnemonicParsing="false" style="-fx-border-color: none;" />
+                  <Button fx:id="comparison" maxWidth="46.0" mnemonicParsing="false" style="-fx-border-color: none;" />
+                  <Button fx:id="sortVisualizer" maxWidth="46.0" mnemonicParsing="false" onAction="#openStart" style="-fx-border-color: none;" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>
