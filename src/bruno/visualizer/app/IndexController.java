@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import bruno.visualizer.util.ActionsUtil;
 import bruno.visualizer.util.Constraints;
+import bruno.visualizer.util.TextUtil;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Labeled;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -96,7 +98,7 @@ public class IndexController {
 									break;
 								}
 								Button button = (Button) child;
-								button.setText(child.getId());
+								button.setText(TextUtil.toSentenceCase(child.getId()));
 							}
 						}
 					};
@@ -134,6 +136,7 @@ public class IndexController {
 	 * @param id   sets id of node
 	 */
 	private void addNodeToVerticalMenu(Labeled node, String id) {
+		node.setTooltip(new Tooltip(TextUtil.toSentenceCase(id)));
 		node.setMaxHeight(Double.MAX_VALUE);
 		node.setId(id);
 		VBox.setVgrow(node, Priority.ALWAYS);
