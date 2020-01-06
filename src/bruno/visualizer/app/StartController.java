@@ -233,10 +233,10 @@ public class StartController extends UpdateGraphThread {
 		chart.getXAxis().setOpacity(0);
 
 		stopSortButton.setTooltip(new Tooltip("Stop sort"));
-        ActionsUtil.setImage(stopSortButton, new Image("file:././././img/blue-x.png"), 26, 26);
+        ActionsUtil.setImage(stopSortButton, new Image("file:././././img/blue-x.png"), Constraints.BOXBUTTONWIDTH, Constraints.BOXBUTTONHEIGHT);
 
 		sortButton.setTooltip(new Tooltip("Start sort"));
-        ActionsUtil.setImage(sortButton, new Image("file:././././img/blue-start.png"), 26, 26);
+        ActionsUtil.setImage(sortButton, new Image("file:././././img/blue-start.png"), Constraints.BOXBUTTONWIDTH, Constraints.BOXBUTTONHEIGHT);
 		
 		transitionSpeed.setMin(Constraints.MINTRANSITIONSPEED);
 		transitionSpeed.setMax(Constraints.MAXTRANSITIONSPEED);

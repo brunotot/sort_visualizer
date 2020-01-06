@@ -4,7 +4,7 @@
 package bruno.visualizer.util;
 
 /**
- * Set of strings that represent CSS color commands.
+ * Set of constraints.
  * 
  * @author Bruno
  */
@@ -18,7 +18,6 @@ public class Constraints {
 	 * Color that user sees when a certain element of array changes.
 	 */
 	public static final String CHANGINGELEMENT = "green";
-	
 
 	/**
 	 * Maximum transition speed for transition speed Slider object.
@@ -29,7 +28,7 @@ public class Constraints {
 	 * Minimum transition speed for transition speed Slider object.
 	 */
 	public static final double MINTRANSITIONSPEED = -800;
-	
+
 	/**
 	 * Holds integer information of how many milliseconds does it take to actually
 	 * start the sorting sequence.
@@ -47,9 +46,12 @@ public class Constraints {
 	public static final int STARTWINDOWWIDTH = 400;
 
 	/**
-	 * Standard width of menu button.
+	 * Standard width of box button.
 	 */
-	public static final int MENUBUTTONWIDTH = 26;
-	
-	public static final int MENUBUTTONHEIGHT = 26;
+	public static final int BOXBUTTONWIDTH = 26;
+
+	/**
+	 * Standard height of box button.
+	 */
+	public static final int BOXBUTTONHEIGHT = 26;
 }
